@@ -1,0 +1,11 @@
+C:\Users\yoshi\AppData\Local\Temporary Projects\Symphony_Board\bin\Debug\Symphony_Board.exe
+C:\Users\yoshi\AppData\Local\Temporary Projects\Symphony_Board\bin\Debug\Symphony_Board.pdb
+C:\Users\yoshi\AppData\Local\Temporary Projects\Symphony_Board\bin\Debug\Symphony_Board.xml
+C:\Users\yoshi\AppData\Local\Temporary Projects\Symphony_Board\obj\x86\Debug\Symphony_Board.Resources.resources
+C:\Users\yoshi\AppData\Local\Temporary Projects\Symphony_Board\obj\x86\Debug\Symphony_Board.vbproj.GenerateResource.Cache
+C:\Users\yoshi\AppData\Local\Temporary Projects\Symphony_Board\obj\x86\Debug\Symphony_Board.exe
+C:\Users\yoshi\AppData\Local\Temporary Projects\Symphony_Board\obj\x86\Debug\Symphony_Board.xml
+C:\Users\yoshi\AppData\Local\Temporary Projects\Symphony_Board\obj\x86\Debug\Symphony_Board.pdb
+C:\Users\yoshi\documents\visual studio 2010\Projects\Symphony_Board\Symphony_Board\obj\x86\Debug\Symphony_Board.exe
+C:\Users\yoshi\documents\visual studio 2010\Projects\Symphony_Board\Symphony_Board\obj\x86\Debug\Symphony_Board.xml
+C:\Users\yoshi\documents\visual studio 2010\Projects\Symphony_Board\Symphony_Board\obj\x86\Debug\Symphony_Board.pdb
