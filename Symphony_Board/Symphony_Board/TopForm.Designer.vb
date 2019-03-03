@@ -96,23 +96,23 @@ Partial Class TopForm
         Me.Label30 = New System.Windows.Forms.Label()
         Me.Label31 = New System.Windows.Forms.Label()
         Me.btnPrint = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.YmBox = New ymdBox.ymdBox()
-        Me.editModeCheckBox = New System.Windows.Forms.CheckBox()
-        Me.btnUpdate = New System.Windows.Forms.Button()
-        Me.btnDelete = New System.Windows.Forms.Button()
-        Me.dgvYotei = New System.Windows.Forms.DataGridView()
+        Me.yoteiGroupBox = New System.Windows.Forms.GroupBox()
         Me.dgvCmnt = New System.Windows.Forms.DataGridView()
-        Me.GroupBox1.SuspendLayout()
-        CType(Me.dgvYotei, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.dgvYotei = New System.Windows.Forms.DataGridView()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.editModeCheckBox = New System.Windows.Forms.CheckBox()
+        Me.YmBox = New ymdBox.ymdBox()
+        Me.yoteiGroupBox.SuspendLayout()
         CType(Me.dgvCmnt, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvYotei, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("MS UI Gothic", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.Label1.Location = New System.Drawing.Point(214, 4)
+        Me.Label1.Location = New System.Drawing.Point(210, 4)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(129, 27)
         Me.Label1.TabIndex = 0
@@ -138,7 +138,7 @@ Partial Class TopForm
         Me.historyListBox.ItemHeight = 12
         Me.historyListBox.Location = New System.Drawing.Point(552, 81)
         Me.historyListBox.Name = "historyListBox"
-        Me.historyListBox.Size = New System.Drawing.Size(144, 496)
+        Me.historyListBox.Size = New System.Drawing.Size(131, 496)
         Me.historyListBox.TabIndex = 2
         '
         'Panel1
@@ -155,11 +155,10 @@ Partial Class TopForm
         '
         Me.dateLabel.AutoSize = True
         Me.dateLabel.Font = New System.Drawing.Font("MS UI Gothic", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.dateLabel.Location = New System.Drawing.Point(157, 32)
+        Me.dateLabel.Location = New System.Drawing.Point(147, 32)
         Me.dateLabel.Name = "dateLabel"
-        Me.dateLabel.Size = New System.Drawing.Size(272, 27)
+        Me.dateLabel.Size = New System.Drawing.Size(0, 27)
         Me.dateLabel.TabIndex = 4
-        Me.dateLabel.Text = "平成30年4月18日（金）"
         '
         'cmntLabel
         '
@@ -168,7 +167,6 @@ Partial Class TopForm
         Me.cmntLabel.Name = "cmntLabel"
         Me.cmntLabel.Size = New System.Drawing.Size(524, 18)
         Me.cmntLabel.TabIndex = 5
-        Me.cmntLabel.Text = "人間の本性は自主性にある、進んですれば総てが楽しい。"
         Me.cmntLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'nhTextBox
@@ -176,10 +174,10 @@ Partial Class TopForm
         Me.nhTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.nhTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.nhTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.nhTextBox.Location = New System.Drawing.Point(138, 105)
+        Me.nhTextBox.Location = New System.Drawing.Point(138, 107)
         Me.nhTextBox.Multiline = True
         Me.nhTextBox.Name = "nhTextBox"
-        Me.nhTextBox.Size = New System.Drawing.Size(402, 61)
+        Me.nhTextBox.Size = New System.Drawing.Size(402, 52)
         Me.nhTextBox.TabIndex = 6
         '
         'Panel2
@@ -457,10 +455,10 @@ Partial Class TopForm
         Me.dsTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.dsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dsTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.dsTextBox.Location = New System.Drawing.Point(138, 290)
+        Me.dsTextBox.Location = New System.Drawing.Point(138, 291)
         Me.dsTextBox.Multiline = True
         Me.dsTextBox.Name = "dsTextBox"
-        Me.dsTextBox.Size = New System.Drawing.Size(402, 44)
+        Me.dsTextBox.Size = New System.Drawing.Size(402, 40)
         Me.dsTextBox.TabIndex = 34
         '
         'snTextBox
@@ -468,10 +466,10 @@ Partial Class TopForm
         Me.snTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.snTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.snTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.snTextBox.Location = New System.Drawing.Point(138, 340)
+        Me.snTextBox.Location = New System.Drawing.Point(138, 342)
         Me.snTextBox.Multiline = True
         Me.snTextBox.Name = "snTextBox"
-        Me.snTextBox.Size = New System.Drawing.Size(402, 47)
+        Me.snTextBox.Size = New System.Drawing.Size(402, 40)
         Me.snTextBox.TabIndex = 35
         '
         'hlprTextBox
@@ -479,10 +477,10 @@ Partial Class TopForm
         Me.hlprTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.hlprTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.hlprTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.hlprTextBox.Location = New System.Drawing.Point(138, 412)
+        Me.hlprTextBox.Location = New System.Drawing.Point(138, 411)
         Me.hlprTextBox.Multiline = True
         Me.hlprTextBox.Name = "hlprTextBox"
-        Me.hlprTextBox.Size = New System.Drawing.Size(402, 41)
+        Me.hlprTextBox.Size = New System.Drawing.Size(402, 40)
         Me.hlprTextBox.TabIndex = 36
         '
         'kyoTextBox
@@ -490,10 +488,10 @@ Partial Class TopForm
         Me.kyoTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.kyoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.kyoTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.kyoTextBox.Location = New System.Drawing.Point(138, 459)
+        Me.kyoTextBox.Location = New System.Drawing.Point(138, 461)
         Me.kyoTextBox.Multiline = True
         Me.kyoTextBox.Name = "kyoTextBox"
-        Me.kyoTextBox.Size = New System.Drawing.Size(402, 47)
+        Me.kyoTextBox.Size = New System.Drawing.Size(402, 40)
         Me.kyoTextBox.TabIndex = 37
         '
         'hokTextBox
@@ -501,10 +499,10 @@ Partial Class TopForm
         Me.hokTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.hokTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.hokTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.hokTextBox.Location = New System.Drawing.Point(138, 512)
+        Me.hokTextBox.Location = New System.Drawing.Point(138, 514)
         Me.hokTextBox.Multiline = True
         Me.hokTextBox.Name = "hokTextBox"
-        Me.hokTextBox.Size = New System.Drawing.Size(402, 56)
+        Me.hokTextBox.Size = New System.Drawing.Size(402, 52)
         Me.hokTextBox.TabIndex = 38
         '
         's1TextBox
@@ -854,20 +852,67 @@ Partial Class TopForm
         Me.btnPrint.Text = "印　刷"
         Me.btnPrint.UseVisualStyleBackColor = True
         '
-        'GroupBox1
+        'yoteiGroupBox
         '
-        Me.GroupBox1.Controls.Add(Me.dgvCmnt)
-        Me.GroupBox1.Controls.Add(Me.dgvYotei)
-        Me.GroupBox1.Controls.Add(Me.btnDelete)
-        Me.GroupBox1.Controls.Add(Me.btnUpdate)
-        Me.GroupBox1.Controls.Add(Me.editModeCheckBox)
-        Me.GroupBox1.Controls.Add(Me.YmBox)
-        Me.GroupBox1.Location = New System.Drawing.Point(702, 10)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(407, 684)
-        Me.GroupBox1.TabIndex = 74
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "予定ﾏｽﾀ"
+        Me.yoteiGroupBox.Controls.Add(Me.dgvCmnt)
+        Me.yoteiGroupBox.Controls.Add(Me.dgvYotei)
+        Me.yoteiGroupBox.Controls.Add(Me.btnDelete)
+        Me.yoteiGroupBox.Controls.Add(Me.btnUpdate)
+        Me.yoteiGroupBox.Controls.Add(Me.editModeCheckBox)
+        Me.yoteiGroupBox.Controls.Add(Me.YmBox)
+        Me.yoteiGroupBox.Location = New System.Drawing.Point(702, 10)
+        Me.yoteiGroupBox.Name = "yoteiGroupBox"
+        Me.yoteiGroupBox.Size = New System.Drawing.Size(407, 684)
+        Me.yoteiGroupBox.TabIndex = 74
+        Me.yoteiGroupBox.TabStop = False
+        Me.yoteiGroupBox.Text = "予定ﾏｽﾀ"
+        '
+        'dgvCmnt
+        '
+        Me.dgvCmnt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvCmnt.Location = New System.Drawing.Point(14, 553)
+        Me.dgvCmnt.Name = "dgvCmnt"
+        Me.dgvCmnt.RowTemplate.Height = 21
+        Me.dgvCmnt.Size = New System.Drawing.Size(379, 124)
+        Me.dgvCmnt.TabIndex = 5
+        '
+        'dgvYotei
+        '
+        Me.dgvYotei.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvYotei.Location = New System.Drawing.Point(14, 63)
+        Me.dgvYotei.Name = "dgvYotei"
+        Me.dgvYotei.RowTemplate.Height = 21
+        Me.dgvYotei.Size = New System.Drawing.Size(379, 484)
+        Me.dgvYotei.TabIndex = 4
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
+        Me.btnDelete.Location = New System.Drawing.Point(303, 35)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(90, 23)
+        Me.btnDelete.TabIndex = 3
+        Me.btnDelete.Text = "削除(掲示板)"
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.Location = New System.Drawing.Point(219, 35)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(78, 23)
+        Me.btnUpdate.TabIndex = 2
+        Me.btnUpdate.Text = "更　新"
+        Me.btnUpdate.UseVisualStyleBackColor = True
+        '
+        'editModeCheckBox
+        '
+        Me.editModeCheckBox.AutoSize = True
+        Me.editModeCheckBox.Location = New System.Drawing.Point(147, 15)
+        Me.editModeCheckBox.Name = "editModeCheckBox"
+        Me.editModeCheckBox.Size = New System.Drawing.Size(138, 16)
+        Me.editModeCheckBox.TabIndex = 1
+        Me.editModeCheckBox.Text = "編集モード（マスタ読込）"
+        Me.editModeCheckBox.UseVisualStyleBackColor = True
         '
         'YmBox
         '
@@ -882,59 +927,12 @@ Partial Class TopForm
         Me.YmBox.Size = New System.Drawing.Size(120, 46)
         Me.YmBox.TabIndex = 0
         '
-        'editModeCheckBox
-        '
-        Me.editModeCheckBox.AutoSize = True
-        Me.editModeCheckBox.Location = New System.Drawing.Point(147, 15)
-        Me.editModeCheckBox.Name = "editModeCheckBox"
-        Me.editModeCheckBox.Size = New System.Drawing.Size(138, 16)
-        Me.editModeCheckBox.TabIndex = 1
-        Me.editModeCheckBox.Text = "編集モード（マスタ読込）"
-        Me.editModeCheckBox.UseVisualStyleBackColor = True
-        '
-        'btnUpdate
-        '
-        Me.btnUpdate.Location = New System.Drawing.Point(219, 35)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(78, 23)
-        Me.btnUpdate.TabIndex = 2
-        Me.btnUpdate.Text = "更　新"
-        Me.btnUpdate.UseVisualStyleBackColor = True
-        '
-        'btnDelete
-        '
-        Me.btnDelete.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.btnDelete.Location = New System.Drawing.Point(303, 35)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(90, 23)
-        Me.btnDelete.TabIndex = 3
-        Me.btnDelete.Text = "削除(掲示板)"
-        Me.btnDelete.UseVisualStyleBackColor = True
-        '
-        'dgvYotei
-        '
-        Me.dgvYotei.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvYotei.Location = New System.Drawing.Point(14, 63)
-        Me.dgvYotei.Name = "dgvYotei"
-        Me.dgvYotei.RowTemplate.Height = 21
-        Me.dgvYotei.Size = New System.Drawing.Size(379, 484)
-        Me.dgvYotei.TabIndex = 4
-        '
-        'dgvCmnt
-        '
-        Me.dgvCmnt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCmnt.Location = New System.Drawing.Point(14, 553)
-        Me.dgvCmnt.Name = "dgvCmnt"
-        Me.dgvCmnt.RowTemplate.Height = 21
-        Me.dgvCmnt.Size = New System.Drawing.Size(379, 124)
-        Me.dgvCmnt.TabIndex = 5
-        '
         'TopForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1133, 723)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.yoteiGroupBox)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.Label31)
         Me.Controls.Add(Me.Label30)
@@ -1011,10 +1009,10 @@ Partial Class TopForm
         Me.Controls.Add(Me.Label1)
         Me.Name = "TopForm"
         Me.Text = "Board　掲示板"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        CType(Me.dgvYotei, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.yoteiGroupBox.ResumeLayout(False)
+        Me.yoteiGroupBox.PerformLayout()
         CType(Me.dgvCmnt, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvYotei, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1094,7 +1092,7 @@ Partial Class TopForm
     Friend WithEvents Label30 As Label
     Friend WithEvents Label31 As Label
     Friend WithEvents btnPrint As Button
-    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents yoteiGroupBox As GroupBox
     Friend WithEvents btnDelete As Button
     Friend WithEvents btnUpdate As Button
     Friend WithEvents editModeCheckBox As CheckBox
