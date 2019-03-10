@@ -124,7 +124,7 @@ Partial Class TopForm
         Me.YmdBox.DateText = ""
         Me.YmdBox.EraLabelText = "H31"
         Me.YmdBox.EraText = ""
-        Me.YmdBox.Location = New System.Drawing.Point(552, 46)
+        Me.YmdBox.Location = New System.Drawing.Point(552, 43)
         Me.YmdBox.MonthLabelText = "03"
         Me.YmdBox.MonthText = ""
         Me.YmdBox.Name = "YmdBox"
@@ -860,9 +860,9 @@ Partial Class TopForm
         Me.yoteiGroupBox.Controls.Add(Me.btnUpdate)
         Me.yoteiGroupBox.Controls.Add(Me.editModeCheckBox)
         Me.yoteiGroupBox.Controls.Add(Me.YmBox)
-        Me.yoteiGroupBox.Location = New System.Drawing.Point(702, 10)
+        Me.yoteiGroupBox.Location = New System.Drawing.Point(702, 7)
         Me.yoteiGroupBox.Name = "yoteiGroupBox"
-        Me.yoteiGroupBox.Size = New System.Drawing.Size(407, 684)
+        Me.yoteiGroupBox.Size = New System.Drawing.Size(416, 696)
         Me.yoteiGroupBox.TabIndex = 74
         Me.yoteiGroupBox.TabStop = False
         Me.yoteiGroupBox.Text = "予定ﾏｽﾀ"
@@ -870,25 +870,25 @@ Partial Class TopForm
         'dgvCmnt
         '
         Me.dgvCmnt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCmnt.Location = New System.Drawing.Point(14, 553)
+        Me.dgvCmnt.Location = New System.Drawing.Point(14, 549)
         Me.dgvCmnt.Name = "dgvCmnt"
         Me.dgvCmnt.RowTemplate.Height = 21
-        Me.dgvCmnt.Size = New System.Drawing.Size(379, 124)
+        Me.dgvCmnt.Size = New System.Drawing.Size(388, 139)
         Me.dgvCmnt.TabIndex = 5
         '
         'dgvYotei
         '
         Me.dgvYotei.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvYotei.Location = New System.Drawing.Point(14, 63)
+        Me.dgvYotei.Location = New System.Drawing.Point(14, 60)
         Me.dgvYotei.Name = "dgvYotei"
         Me.dgvYotei.RowTemplate.Height = 21
-        Me.dgvYotei.Size = New System.Drawing.Size(379, 484)
+        Me.dgvYotei.Size = New System.Drawing.Size(388, 484)
         Me.dgvYotei.TabIndex = 4
         '
         'btnDelete
         '
         Me.btnDelete.Font = New System.Drawing.Font("MS UI Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
-        Me.btnDelete.Location = New System.Drawing.Point(303, 35)
+        Me.btnDelete.Location = New System.Drawing.Point(313, 33)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(90, 23)
         Me.btnDelete.TabIndex = 3
@@ -897,7 +897,7 @@ Partial Class TopForm
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(219, 35)
+        Me.btnUpdate.Location = New System.Drawing.Point(229, 33)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(78, 23)
         Me.btnUpdate.TabIndex = 2
@@ -920,7 +920,7 @@ Partial Class TopForm
         Me.YmBox.DateText = ""
         Me.YmBox.EraLabelText = "H31"
         Me.YmBox.EraText = ""
-        Me.YmBox.Location = New System.Drawing.Point(14, 14)
+        Me.YmBox.Location = New System.Drawing.Point(14, 13)
         Me.YmBox.MonthLabelText = "03"
         Me.YmBox.MonthText = ""
         Me.YmBox.Name = "YmBox"
@@ -931,7 +931,7 @@ Partial Class TopForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1133, 723)
+        Me.ClientSize = New System.Drawing.Size(1173, 723)
         Me.Controls.Add(Me.yoteiGroupBox)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.Label31)

@@ -36,10 +36,21 @@ Symphony_Board
  <param name="sender"></param>
  <param name="e"></param>
 </member>
-<member name="M:Symphony_Board.TopForm.clearInput">
+<member name="M:Symphony_Board.TopForm.clearInputBoard">
  <summary>
- 入力内容クリア
+ 掲示板入力内容クリア
  </summary>
+</member>
+<member name="M:Symphony_Board.TopForm.clearInputYotei">
+ <summary>
+ 予定表クリア
+ </summary>
+</member>
+<member name="M:Symphony_Board.TopForm.createCellStyles">
+ <summary>
+ セルスタイル作成
+ </summary>
+ <remarks></remarks>
 </member>
 <member name="M:Symphony_Board.TopForm.loadHistoryList">
  <summary>
