@@ -52,6 +52,11 @@ Symphony_Board
  </summary>
  <remarks></remarks>
 </member>
+<member name="M:Symphony_Board.TopForm.loadMasterData">
+ <summary>
+ マスタ読込処理
+ </summary>
+</member>
 <member name="M:Symphony_Board.TopForm.loadHistoryList">
  <summary>
  履歴リスト取得、表示
@@ -64,6 +69,13 @@ Symphony_Board
  <param name="adStr"></param>
  <returns></returns>
  <remarks></remarks>
+</member>
+<member name="M:Symphony_Board.TopForm.btnDelete_Click(System.Object,System.EventArgs)">
+ <summary>
+ 削除ボタンクリックイベント
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
 </member>
 <member name="M:Symphony_Board.Util.EnableDoubleBuffering(System.Windows.Forms.Control)">
  <summary>

@@ -89,6 +89,10 @@ Public Class TopForm
         'セルスタイル作成
         createCellStyles()
 
+        '非表示
+        YmdBox.Visible = False
+        yoteiGroupBox.Visible = False
+
         'データグリッドビュー初期設定
         initDgvYotei()
         initDgvCmnt()
@@ -97,10 +101,6 @@ Public Class TopForm
         '現在日付セット
         YmdBox.setADStr(Today.ToString("yyyy/MM/dd"))
         YmBox.setADStr(Today.ToString("yyyy/MM/dd"))
-
-        '非表示
-        YmdBox.Visible = False
-        yoteiGroupBox.Visible = False
 
         '履歴リスト表示
         loadHistoryList()
@@ -359,9 +359,17 @@ Public Class TopForm
             tok4TextBox.Text = Util.checkDBNullValue(rs.Fields("Tok4").Value) '特養・夜勤者
             syk1TextBox.Text = Util.checkDBNullValue(rs.Fields("Syk1").Value) '宿直者
             syk2TextBox.Text = Util.checkDBNullValue(rs.Fields("Syk2").Value) '宿直者
+
+            rs.Close()
+            cnn.Close()
+        ElseIf rs.RecordCount = 0 AndAlso editModeCheckBox.Checked Then
+            rs.Close()
+            cnn.Close()
+            loadMasterData()
+        Else
+            rs.Close()
+            cnn.Close()
         End If
-        rs.Close()
-        cnn.Close()
     End Sub
 
     Private Sub displayDgvYotei(ym As String)
@@ -423,6 +431,128 @@ Public Class TopForm
                 .SortMode = DataGridViewColumnSortMode.NotSortable
             End With
         End With
+    End Sub
+
+    ''' <summary>
+    ''' マスタ読込処理
+    ''' </summary>
+    Private Sub loadMasterData()
+        clearInputBoard()
+
+        Dim ymd As String = YmdBox.getADStr()
+        Dim ym As String = ymd.Substring(0, 7)
+        Dim dd As Integer = CInt(ymd.Split("/")(2))
+
+        '日付
+        dateLabel.Text = formatDateStr(ymd)
+
+        'コメント
+        cmntLabel.Text = Util.checkDBNullValue(dgvCmnt("Cmnt", dd - 1).Value)
+
+        'Brdから最新のデータ読込
+        Dim cnn As New ADODB.Connection
+        cnn.Open(DB_Board)
+        Dim rs As New ADODB.Recordset
+        Dim sql As String = "select top 1 * from Brd order by Ymd Desc"
+        rs.Open(sql, cnn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If rs.RecordCount > 0 Then
+            '特養
+            nhTextBox.Text = Util.checkDBNullValue(rs.Fields("NhTxt").Value)
+            'ショートステイ
+            Dim ssCount As Integer = 0
+            For i As Integer = 1 To 10
+                Dim nam As String = Util.checkDBNullValue(rs.Fields("S" & i).Value)
+                If nam <> "" Then
+                    DirectCast(Controls("s" & i & "TextBox"), TextBox).Text = nam
+                    ssCount += 1
+                End If
+            Next
+            ssLabel.Text = ssCount
+            'デイサービス
+            dsTextBox.Text = Util.checkDBNullValue(rs.Fields("DsTxt").Value)
+            '支援ハウス
+            snTextBox.Text = Util.checkDBNullValue(rs.Fields("SnTxt").Value)
+            'ヘルパー
+            hlprTextBox.Text = Util.checkDBNullValue(rs.Fields("HlprTxt").Value)
+            '居宅
+            kyoTextBox.Text = Util.checkDBNullValue(rs.Fields("KyoTxt").Value)
+            'その他
+            hokTextBox.Text = Util.checkDBNullValue(rs.Fields("HokTxt").Value)
+        End If
+        rs.Close()
+
+        '予定マスタからの読込
+        rs = New ADODB.Recordset
+        sql = "select * from EtcM where Ymd='" & ymd & "'"
+        rs.Open(sql, cnn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If rs.RecordCount > 0 Then
+            sdnTextBox.Text = Util.checkDBNullValue(rs.Fields("Sdn").Value) '生活相談員待機
+            syk1TextBox.Text = Util.checkDBNullValue(rs.Fields("Syk1").Value) '宿直者
+            syk2TextBox.Text = Util.checkDBNullValue(rs.Fields("Syk2").Value) '宿直者
+            nhLabel.Text = Util.checkDBNullValue(rs.Fields("Nh").Value)
+            hlprLabel.Text = Util.checkDBNullValue(rs.Fields("Hlpr").Value)
+            dsLabel.Text = Util.checkDBNullValue(rs.Fields("Ds").Value)
+        End If
+        rs.Close()
+        cnn.Close()
+
+        'Shiftから看護師待機を読込
+        cnn.Open(DB_Shift)
+        rs = New ADODB.Recordset
+        sql = "select * from Mnth where Ym='" & ym & "' And (Gyo=0 Or Gyo=" & dd & ") order by Gyo Desc"
+        rs.Open(sql, cnn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If rs.RecordCount = 2 Then
+            Dim initialStr As String = Util.checkDBNullValue(rs.Fields("D1").Value) '漢字１文字
+            rs.MoveNext()
+            'Gyo=0のレコードから対象の苗字を探す
+            For i As Integer = 0 To rs.Fields.Count - 1
+                Dim nam As String = Util.checkDBNullValue(rs.Fields(i).Value)
+                If nam <> "" AndAlso nam.Substring(0, 1) = initialStr Then
+                    nam = nam.Replace(" ", "　")
+                    nsTextBox.Text = nam.Split("　")(0)
+                    Exit For
+                End If
+            Next
+        End If
+        rs.Close()
+        cnn.Close()
+
+        'Workから特養夜勤者読込
+        cnn.Open(DB_Work)
+        rs = New ADODB.Recordset
+        sql = "select * from KinD where Ym='" & ym & "' order by Seq2"
+        rs.Open(sql, cnn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        While Not rs.EOF
+            Dim workStr As String = Util.checkDBNullValue(rs.Fields("Y" & dd).Value) '勤務名
+            If workStr = "夜" OrElse workStr = "深" Then
+                Dim nam As String = Util.checkDBNullValue(rs.Fields("Nam").Value)
+                If nam <> "" Then
+                    Dim seq2 As String = Util.checkDBNullValue(rs.Fields("Seq2").Value)
+                    nam = nam.Replace(" ", "　").Split("　")(0)
+                    If workStr = "夜" Then
+                        If seq2.Substring(0, 1) = "2" Then
+                            '2階の人用
+                            tok1TextBox.Text = nam
+                        Else
+                            '3階と※の人用
+                            tok2TextBox.Text = nam
+                        End If
+                    Else
+                        If seq2.Substring(0, 1) = "2" Then
+                            '2階の人用
+                            tok3TextBox.Text = nam
+                        Else
+                            '3階と※の人用
+                            tok4TextBox.Text = nam
+                        End If
+                    End If
+                End If
+            End If
+            rs.MoveNext()
+        End While
+        rs.Close()
+        cnn.Close()
+
     End Sub
 
     ''' <summary>
@@ -518,5 +648,45 @@ Public Class TopForm
         End If
     End Sub
 
+    Private Sub editModeCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles editModeCheckBox.CheckedChanged
+        If editModeCheckBox.Checked Then
+            loadMasterData()
+        Else
+            displayBoard(YmdBox.getADStr())
+        End If
+    End Sub
 
+    ''' <summary>
+    ''' 削除ボタンクリックイベント
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        Dim result As DialogResult = MessageBox.Show("削除してよろしいですか？", "削除", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+            Dim ymd As String = YmdBox.getADStr()
+            Dim cnn As New ADODB.Connection
+            cnn.Open(DB_Board)
+            Dim cmd As New ADODB.Command()
+            cmd.ActiveConnection = cnn
+            cmd.CommandText = "delete from Brd where Ymd='" & ymd & "'"
+            cmd.Execute()
+            cnn.Close()
+
+            '履歴リスト表示
+            loadHistoryList()
+
+            '再表示
+            YmdBox.setADStr(ymd)
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' 更新ボタンクリックイベント
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+
+    End Sub
 End Class
