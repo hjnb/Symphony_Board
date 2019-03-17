@@ -116,6 +116,9 @@ Public Class TopForm
             '(Alt + F10)キー押下
             YmdBox.Visible = Not YmdBox.Visible
             yoteiGroupBox.Visible = Not yoteiGroupBox.Visible
+            If YmdBox.Visible Then
+                YmdBox.Focus()
+            End If
         End If
     End Sub
 
@@ -687,6 +690,120 @@ Public Class TopForm
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        Dim cnn As New ADODB.Connection
+        cnn.Open(DB_Board)
+        Dim rs As ADODB.Recordset
+        Dim sql As String
 
+        'dgv予定マスタの更新
+        Dim ym As String = YmBox.getADYmStr()
+        Dim year As Integer = CInt(ym.Split("/")(0))
+        Dim month As Integer = CInt(ym.Split("/")(1))
+        Dim dt As New DateTime(year, month, 1)
+        Dim lastDay As Integer = DateTime.DaysInMonth(year, month) '日数
+        rs = New ADODB.Recordset
+        sql = "select * from EtcM where Ym='" & ym & "' order by Ymd"
+        rs.Open(sql, cnn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If rs.RecordCount <= 0 Then
+            '新規登録
+            For i As Integer = 0 To lastDay - 1
+                rs.AddNew()
+                rs.Fields("Ym").Value = ym
+                rs.Fields("Ymd").Value = Util.checkDBNullValue(dgvYotei("Ymd", i).Value)
+                rs.Fields("Sdn").Value = Util.checkDBNullValue(dgvYotei("Sdn", i).Value)
+                rs.Fields("Syk1").Value = Util.checkDBNullValue(dgvYotei("Syk1", i).Value)
+                rs.Fields("Syk2").Value = Util.checkDBNullValue(dgvYotei("Syk2", i).Value)
+                rs.Fields("Ds").Value = Util.checkDBNullValue(dgvYotei("Ds", i).Value)
+                rs.Fields("Hlpr").Value = Util.checkDBNullValue(dgvYotei("Hlpr", i).Value)
+                rs.Fields("Nh").Value = Util.checkDBNullValue(dgvYotei("Nh", i).Value)
+            Next
+            rs.Update()
+        Else
+            '更新
+            For i As Integer = 0 To rs.RecordCount - 1
+                rs.Fields("Sdn").Value = Util.checkDBNullValue(dgvYotei("Sdn", i).Value)
+                rs.Fields("Syk1").Value = Util.checkDBNullValue(dgvYotei("Syk1", i).Value)
+                rs.Fields("Syk2").Value = Util.checkDBNullValue(dgvYotei("Syk2", i).Value)
+                rs.Fields("Ds").Value = Util.checkDBNullValue(dgvYotei("Ds", i).Value)
+                rs.Fields("Hlpr").Value = Util.checkDBNullValue(dgvYotei("Hlpr", i).Value)
+                rs.Fields("Nh").Value = Util.checkDBNullValue(dgvYotei("Nh", i).Value)
+                If i <> rs.RecordCount - 1 Then
+                    rs.MoveNext()
+                End If
+            Next
+            rs.Update()
+        End If
+        rs.Close()
+
+        'dgvコメントの更新
+        rs = New ADODB.Recordset
+        sql = "select Cmnt from CmntM order by Dy"
+        rs.Open(sql, cnn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If rs.RecordCount > 0 Then
+            For i As Integer = 0 To 30
+                rs.Fields("Cmnt").Value = Util.checkDBNullValue(dgvCmnt("Cmnt", i).Value)
+                If i <> 30 Then
+                    rs.MoveNext()
+                End If
+            Next
+            rs.Update()
+        End If
+        rs.Close()
+
+        'dgvBoardの更新
+        Dim ymd As String = YmdBox.getADStr()
+        rs = New ADODB.Recordset
+        sql = "select * from Brd where Ymd='" & ymd & "'"
+        rs.Open(sql, cnn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If rs.RecordCount <= 0 Then
+            '新規登録
+            rs.AddNew()
+        Else
+            '更新確認
+            Dim result As DialogResult = MessageBox.Show("データが存在します。更新してよろしいですか？", "更新", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result <> DialogResult.Yes Then
+                rs.Close()
+                cnn.Close()
+                Return
+            End If
+        End If
+        rs.Fields("Ymd").Value = ymd
+        rs.Fields("Cmnt").Value = cmntLabel.Text
+        rs.Fields("Nh").Value = nhLabel.Text
+        rs.Fields("NhTxt").Value = nhTextBox.Text
+        rs.Fields("S1").Value = s1TextBox.Text
+        rs.Fields("S2").Value = s2TextBox.Text
+        rs.Fields("S3").Value = s3TextBox.Text
+        rs.Fields("S4").Value = s4TextBox.Text
+        rs.Fields("S5").Value = s5TextBox.Text
+        rs.Fields("S6").Value = s6TextBox.Text
+        rs.Fields("S7").Value = s7TextBox.Text
+        rs.Fields("S8").Value = s8TextBox.Text
+        rs.Fields("S9").Value = s9TextBox.Text
+        rs.Fields("S10").Value = s10TextBox.Text
+        rs.Fields("Ds").Value = dsLabel.Text
+        rs.Fields("DsTxt").Value = dsTextBox.Text
+        rs.Fields("SnTxt").Value = snTextBox.Text
+        rs.Fields("Hlpr").Value = hlprLabel.Text
+        rs.Fields("HlprTxt").Value = hlprTextBox.Text
+        rs.Fields("KyoTxt").Value = kyoTextBox.Text
+        rs.Fields("HokTxt").Value = hokTextBox.Text
+        rs.Fields("Sdn").Value = sdnTextBox.Text
+        rs.Fields("Ns").Value = nsTextBox.Text
+        rs.Fields("Tok1").Value = tok1TextBox.Text
+        rs.Fields("Tok2").Value = tok2TextBox.Text
+        rs.Fields("Tok3").Value = tok3TextBox.Text
+        rs.Fields("Tok4").Value = tok4TextBox.Text
+        rs.Fields("Syk1").Value = syk1TextBox.Text
+        rs.Fields("Syk2").Value = syk2TextBox.Text
+        rs.Update()
+        rs.Close()
+        cnn.Close()
+
+        '再表示
+        displayBoard(ymd)
+
+        '履歴リスト再表示
+        loadHistoryList()
     End Sub
 End Class

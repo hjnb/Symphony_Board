@@ -171,7 +171,7 @@ Partial Class TopForm
         '
         'nhTextBox
         '
-        Me.nhTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.nhTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.nhTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.nhTextBox.ForeColor = System.Drawing.Color.Blue
         Me.nhTextBox.Location = New System.Drawing.Point(138, 107)
@@ -417,7 +417,6 @@ Partial Class TopForm
         Me.nhLabel.Name = "nhLabel"
         Me.nhLabel.Size = New System.Drawing.Size(31, 15)
         Me.nhLabel.TabIndex = 30
-        Me.nhLabel.Text = "93"
         Me.nhLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ssLabel
@@ -427,7 +426,6 @@ Partial Class TopForm
         Me.ssLabel.Name = "ssLabel"
         Me.ssLabel.Size = New System.Drawing.Size(31, 15)
         Me.ssLabel.TabIndex = 31
-        Me.ssLabel.Text = "8"
         Me.ssLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'dsLabel
@@ -437,7 +435,6 @@ Partial Class TopForm
         Me.dsLabel.Name = "dsLabel"
         Me.dsLabel.Size = New System.Drawing.Size(31, 15)
         Me.dsLabel.TabIndex = 32
-        Me.dsLabel.Text = "15"
         Me.dsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'hlprLabel
@@ -447,12 +444,11 @@ Partial Class TopForm
         Me.hlprLabel.Name = "hlprLabel"
         Me.hlprLabel.Size = New System.Drawing.Size(31, 15)
         Me.hlprLabel.TabIndex = 33
-        Me.hlprLabel.Text = "13"
         Me.hlprLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'dsTextBox
         '
-        Me.dsTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.dsTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.dsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dsTextBox.ForeColor = System.Drawing.Color.Blue
         Me.dsTextBox.Location = New System.Drawing.Point(138, 291)
@@ -463,7 +459,7 @@ Partial Class TopForm
         '
         'snTextBox
         '
-        Me.snTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.snTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.snTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.snTextBox.ForeColor = System.Drawing.Color.Blue
         Me.snTextBox.Location = New System.Drawing.Point(138, 342)
@@ -474,7 +470,7 @@ Partial Class TopForm
         '
         'hlprTextBox
         '
-        Me.hlprTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.hlprTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.hlprTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.hlprTextBox.ForeColor = System.Drawing.Color.Blue
         Me.hlprTextBox.Location = New System.Drawing.Point(138, 411)
@@ -485,7 +481,7 @@ Partial Class TopForm
         '
         'kyoTextBox
         '
-        Me.kyoTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.kyoTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.kyoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.kyoTextBox.ForeColor = System.Drawing.Color.Blue
         Me.kyoTextBox.Location = New System.Drawing.Point(138, 461)
@@ -496,7 +492,7 @@ Partial Class TopForm
         '
         'hokTextBox
         '
-        Me.hokTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.hokTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.hokTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.hokTextBox.ForeColor = System.Drawing.Color.Blue
         Me.hokTextBox.Location = New System.Drawing.Point(138, 514)
@@ -507,6 +503,7 @@ Partial Class TopForm
         '
         's1TextBox
         '
+        Me.s1TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s1TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s1TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s1TextBox.Location = New System.Drawing.Point(145, 191)
@@ -516,6 +513,7 @@ Partial Class TopForm
         '
         's2TextBox
         '
+        Me.s2TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s2TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s2TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s2TextBox.Location = New System.Drawing.Point(145, 205)
@@ -525,6 +523,7 @@ Partial Class TopForm
         '
         's4TextBox
         '
+        Me.s4TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s4TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s4TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s4TextBox.Location = New System.Drawing.Point(145, 233)
@@ -534,6 +533,7 @@ Partial Class TopForm
         '
         's3TextBox
         '
+        Me.s3TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s3TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s3TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s3TextBox.Location = New System.Drawing.Point(145, 219)
@@ -543,6 +543,7 @@ Partial Class TopForm
         '
         's5TextBox
         '
+        Me.s5TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s5TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s5TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s5TextBox.Location = New System.Drawing.Point(145, 247)
@@ -552,6 +553,7 @@ Partial Class TopForm
         '
         's10TextBox
         '
+        Me.s10TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s10TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s10TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s10TextBox.Location = New System.Drawing.Point(269, 247)
@@ -561,6 +563,7 @@ Partial Class TopForm
         '
         's9TextBox
         '
+        Me.s9TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s9TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s9TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s9TextBox.Location = New System.Drawing.Point(269, 233)
@@ -570,6 +573,7 @@ Partial Class TopForm
         '
         's8TextBox
         '
+        Me.s8TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s8TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s8TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s8TextBox.Location = New System.Drawing.Point(269, 219)
@@ -579,6 +583,7 @@ Partial Class TopForm
         '
         's7TextBox
         '
+        Me.s7TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s7TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s7TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s7TextBox.Location = New System.Drawing.Point(269, 205)
@@ -588,6 +593,7 @@ Partial Class TopForm
         '
         's6TextBox
         '
+        Me.s6TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.s6TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.s6TextBox.ForeColor = System.Drawing.Color.Blue
         Me.s6TextBox.Location = New System.Drawing.Point(269, 191)
@@ -677,6 +683,7 @@ Partial Class TopForm
         '
         'sdnTextBox
         '
+        Me.sdnTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.sdnTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.sdnTextBox.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.sdnTextBox.ForeColor = System.Drawing.Color.Blue
@@ -688,6 +695,7 @@ Partial Class TopForm
         '
         'nsTextBox
         '
+        Me.nsTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.nsTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.nsTextBox.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.nsTextBox.ForeColor = System.Drawing.Color.Blue
@@ -699,6 +707,7 @@ Partial Class TopForm
         '
         'tok1TextBox
         '
+        Me.tok1TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.tok1TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.tok1TextBox.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.tok1TextBox.ForeColor = System.Drawing.Color.Blue
@@ -710,6 +719,7 @@ Partial Class TopForm
         '
         'tok2TextBox
         '
+        Me.tok2TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.tok2TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.tok2TextBox.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.tok2TextBox.ForeColor = System.Drawing.Color.Blue
@@ -731,6 +741,7 @@ Partial Class TopForm
         '
         'tok4TextBox
         '
+        Me.tok4TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.tok4TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.tok4TextBox.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.tok4TextBox.ForeColor = System.Drawing.Color.Blue
@@ -752,6 +763,7 @@ Partial Class TopForm
         '
         'tok3TextBox
         '
+        Me.tok3TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.tok3TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.tok3TextBox.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.tok3TextBox.ForeColor = System.Drawing.Color.Blue
@@ -773,6 +785,7 @@ Partial Class TopForm
         '
         'syk1TextBox
         '
+        Me.syk1TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.syk1TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.syk1TextBox.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.syk1TextBox.ForeColor = System.Drawing.Color.Blue
@@ -784,6 +797,7 @@ Partial Class TopForm
         '
         'syk2TextBox
         '
+        Me.syk2TextBox.BackColor = System.Drawing.SystemColors.Control
         Me.syk2TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.syk2TextBox.Font = New System.Drawing.Font("MS UI Gothic", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(128, Byte))
         Me.syk2TextBox.ForeColor = System.Drawing.Color.Blue

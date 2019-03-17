@@ -70,6 +70,20 @@ Symphony_Board
  <returns></returns>
  <remarks></remarks>
 </member>
+<member name="M:Symphony_Board.TopForm.btnDelete_Click(System.Object,System.EventArgs)">
+ <summary>
+ 削除ボタンクリックイベント
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Symphony_Board.TopForm.btnUpdate_Click(System.Object,System.EventArgs)">
+ <summary>
+ 更新ボタンクリックイベント
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
 <member name="M:Symphony_Board.Util.EnableDoubleBuffering(System.Windows.Forms.Control)">
  <summary>
  コントロールのDoubleBufferedプロパティをTrueにする
