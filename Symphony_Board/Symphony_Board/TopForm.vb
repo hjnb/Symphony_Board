@@ -919,6 +919,9 @@ Public Class TopForm
         dataArray(48, 6) = Util.checkDBNullValue(rs.Fields("Syk2").Value)
         dataArray(48, 7) = "さん"
 
+        rs.Close()
+        cnn.Close()
+
         'エクセル準備
         Dim objExcel As Excel.Application = CreateObject("Excel.Application")
         Dim objWorkBooks As Excel.Workbooks = objExcel.Workbooks

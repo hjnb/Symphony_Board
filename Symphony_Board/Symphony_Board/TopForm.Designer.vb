@@ -368,7 +368,7 @@ Partial Class TopForm
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(134, 15)
         Me.Label13.TabIndex = 25
-        Me.Label13.Text = "本日のご利用者数は"
+        Me.Label13.Text = "本日のご入居者数は"
         '
         'Label14
         '
