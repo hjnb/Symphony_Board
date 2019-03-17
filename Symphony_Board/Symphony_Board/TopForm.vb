@@ -1,4 +1,6 @@
 ﻿Imports System.Data.OleDb
+Imports System.Runtime.InteropServices
+Imports Microsoft.Office.Interop
 
 Public Class TopForm
     Public Class dgvRowHeaderCell
@@ -187,6 +189,9 @@ Public Class TopForm
         readOnlyCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
     End Sub
 
+    ''' <summary>
+    ''' dgvコメント初期設定
+    ''' </summary>
     Private Sub initDgvCmnt()
         Util.EnableDoubleBuffering(dgvCmnt)
 
@@ -213,6 +218,9 @@ Public Class TopForm
         End With
     End Sub
 
+    ''' <summary>
+    ''' dgv予定初期設定
+    ''' </summary>
     Private Sub initDgvYotei()
         Util.EnableDoubleBuffering(dgvYotei)
 
@@ -313,6 +321,10 @@ Public Class TopForm
 
     End Sub
 
+    ''' <summary>
+    ''' 掲示板表示
+    ''' </summary>
+    ''' <param name="ymd"></param>
     Private Sub displayBoard(ymd As String)
         clearInputBoard()
 
@@ -375,6 +387,10 @@ Public Class TopForm
         End If
     End Sub
 
+    ''' <summary>
+    ''' dgv予定マスタ表示
+    ''' </summary>
+    ''' <param name="ym"></param>
     Private Sub displayDgvYotei(ym As String)
         'クリア
         clearInputYotei()
@@ -412,6 +428,9 @@ Public Class TopForm
 
     End Sub
 
+    ''' <summary>
+    ''' dgvコメント表示
+    ''' </summary>
     Private Sub displayDgvCmnt()
         dgvCmnt.Columns.Clear()
         Dim cnn As New ADODB.Connection
@@ -651,6 +670,11 @@ Public Class TopForm
         End If
     End Sub
 
+    ''' <summary>
+    ''' 編集モードチェックボックス値変更イベント
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
     Private Sub editModeCheckBox_CheckedChanged(sender As Object, e As EventArgs) Handles editModeCheckBox.CheckedChanged
         If editModeCheckBox.Checked Then
             loadMasterData()
@@ -760,7 +784,7 @@ Public Class TopForm
             rs.AddNew()
         Else
             '更新確認
-            Dim result As DialogResult = MessageBox.Show("データが存在します。更新してよろしいですか？", "更新", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            Dim result As DialogResult = MessageBox.Show("既に登録されています。上書きしますか？", "更新", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If result <> DialogResult.Yes Then
                 rs.Close()
                 cnn.Close()
@@ -805,5 +829,132 @@ Public Class TopForm
 
         '履歴リスト再表示
         loadHistoryList()
+    End Sub
+
+    ''' <summary>
+    ''' 印刷ボタンクリックイベント
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        '日付
+        Dim ymd As String = YmdBox.getADStr()
+
+        'データ存在チェック
+        Dim cnn As New ADODB.Connection
+        cnn.Open(DB_Board)
+        Dim rs As New ADODB.Recordset
+        Dim sql As String = "select * from Brd where Ymd='" & ymd & "'"
+        rs.Open(sql, cnn, ADODB.CursorTypeEnum.adOpenKeyset, ADODB.LockTypeEnum.adLockOptimistic)
+        If rs.RecordCount <= 0 Then
+            MsgBox("印刷データがありません。", MsgBoxStyle.Exclamation)
+            rs.Close()
+            cnn.Close()
+            Return
+        End If
+
+        '印刷データ作成
+        Dim ymdFormatStr As String = formatDateStr(ymd)
+        Dim cmnt As String = Util.checkDBNullValue(rs.Fields("Cmnt").Value)
+        Dim dataArray(48, 9) As String
+        '特養
+        dataArray(0, 0) = "本日のご入居者数は " & Util.checkDBNullValue(rs.Fields("Nh").Value) & " 名です。"
+        dataArray(2, 0) = Util.checkDBNullValue(rs.Fields("NhTxt").Value)
+        'ショート
+        Dim ssCount As Integer = 0
+        Dim ssArray(9) As String
+        For i As Integer = 0 To 9
+            Dim nam As String = Util.checkDBNullValue(rs.Fields("S" & (i + 1)).Value)
+            ssArray(i) = nam
+            If nam <> "" Then
+                ssCount += 1
+            End If
+        Next
+        dataArray(8, 0) = "本日のご利用者数は " & ssCount & " 名です。"
+        dataArray(9, 0) = ssArray(0)
+        dataArray(10, 0) = ssArray(1)
+        dataArray(11, 0) = ssArray(2)
+        dataArray(12, 0) = ssArray(3)
+        dataArray(13, 0) = ssArray(4)
+        dataArray(9, 4) = ssArray(5)
+        dataArray(10, 4) = ssArray(6)
+        dataArray(11, 4) = ssArray(7)
+        dataArray(12, 4) = ssArray(8)
+        dataArray(13, 4) = ssArray(9)
+        'デイサービス
+        dataArray(16, 0) = "本日のご利用者数は " & Util.checkDBNullValue(rs.Fields("Ds").Value) & " 名です。"
+        dataArray(17, 0) = Util.checkDBNullValue(rs.Fields("DsTxt").Value)
+        '支援ハウス
+        dataArray(21, 0) = Util.checkDBNullValue(rs.Fields("SnTxt").Value)
+        'ヘルパー
+        dataArray(26, 0) = "本日のご利用者数は " & Util.checkDBNullValue(rs.Fields("Hlpr").Value) & " 名です。"
+        dataArray(27, 0) = Util.checkDBNullValue(rs.Fields("HlprTxt").Value)
+        '居宅
+        dataArray(31, 0) = Util.checkDBNullValue(rs.Fields("KyoTxt").Value)
+        'その他
+        dataArray(36, 0) = Util.checkDBNullValue(rs.Fields("HokTxt").Value)
+        '本日の待機者
+        dataArray(42, 0) = "待機者は月曜日からの一週間交代になっています。"
+        '生活相談員
+        dataArray(44, 0) = Util.checkDBNullValue(rs.Fields("Sdn").Value)
+        dataArray(44, 1) = "さん"
+        '看護師
+        dataArray(45, 0) = Util.checkDBNullValue(rs.Fields("Ns").Value)
+        dataArray(45, 1) = "さん"
+        '特養・夜勤者
+        dataArray(46, 0) = Util.checkDBNullValue(rs.Fields("Tok1").Value)
+        dataArray(46, 1) = "さん"
+        dataArray(46, 2) = Util.checkDBNullValue(rs.Fields("Tok2").Value)
+        dataArray(46, 3) = "さん、"
+        dataArray(46, 4) = Util.checkDBNullValue(rs.Fields("Tok3").Value)
+        dataArray(46, 5) = "さん、"
+        dataArray(46, 6) = Util.checkDBNullValue(rs.Fields("Tok4").Value)
+        dataArray(46, 7) = "さん"
+        dataArray(47, 4) = "(深夜)"
+        dataArray(47, 6) = "(深夜)"
+        '宿直
+        dataArray(48, 3) = "本日の宿直は"
+        dataArray(48, 4) = Util.checkDBNullValue(rs.Fields("Syk1").Value)
+        dataArray(48, 5) = "さん、"
+        dataArray(48, 6) = Util.checkDBNullValue(rs.Fields("Syk2").Value)
+        dataArray(48, 7) = "さん"
+
+        'エクセル準備
+        Dim objExcel As Excel.Application = CreateObject("Excel.Application")
+        Dim objWorkBooks As Excel.Workbooks = objExcel.Workbooks
+        Dim objWorkBook As Excel.Workbook = objWorkBooks.Open(excelFilePass)
+        Dim oSheet As Excel.Worksheet = objWorkBook.Worksheets("Board改")
+        objExcel.Calculation = Excel.XlCalculation.xlCalculationManual
+        objExcel.ScreenUpdating = False
+
+        '日付
+        oSheet.Range("B3").Value = ymdFormatStr
+        'コメント
+        oSheet.Range("B5").Value = cmnt
+
+        'データ貼り付け
+        oSheet.Range("F7", "O55").Value = dataArray
+
+        objExcel.Calculation = Excel.XlCalculation.xlCalculationAutomatic
+        objExcel.ScreenUpdating = True
+
+        '変更保存確認ダイアログ非表示
+        objExcel.DisplayAlerts = False
+
+        '印刷
+        If printState = "Y" Then
+            oSheet.PrintOut()
+        ElseIf printState = "N" Then
+            objExcel.Visible = True
+            oSheet.PrintPreview(1)
+        End If
+
+        ' EXCEL解放
+        objExcel.Quit()
+        Marshal.ReleaseComObject(objWorkBook)
+        Marshal.ReleaseComObject(objExcel)
+        oSheet = Nothing
+        objWorkBook = Nothing
+        objExcel = Nothing
     End Sub
 End Class

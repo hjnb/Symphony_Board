@@ -52,6 +52,33 @@ Symphony_Board
  </summary>
  <remarks></remarks>
 </member>
+<member name="M:Symphony_Board.TopForm.initDgvCmnt">
+ <summary>
+ dgvコメント初期設定
+ </summary>
+</member>
+<member name="M:Symphony_Board.TopForm.initDgvYotei">
+ <summary>
+ dgv予定初期設定
+ </summary>
+</member>
+<member name="M:Symphony_Board.TopForm.displayBoard(System.String)">
+ <summary>
+ 掲示板表示
+ </summary>
+ <param name="ymd"></param>
+</member>
+<member name="M:Symphony_Board.TopForm.displayDgvYotei(System.String)">
+ <summary>
+ dgv予定マスタ表示
+ </summary>
+ <param name="ym"></param>
+</member>
+<member name="M:Symphony_Board.TopForm.displayDgvCmnt">
+ <summary>
+ dgvコメント表示
+ </summary>
+</member>
 <member name="M:Symphony_Board.TopForm.loadMasterData">
  <summary>
  マスタ読込処理
@@ -70,6 +97,13 @@ Symphony_Board
  <returns></returns>
  <remarks></remarks>
 </member>
+<member name="M:Symphony_Board.TopForm.editModeCheckBox_CheckedChanged(System.Object,System.EventArgs)">
+ <summary>
+ 編集モードチェックボックス値変更イベント
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
 <member name="M:Symphony_Board.TopForm.btnDelete_Click(System.Object,System.EventArgs)">
  <summary>
  削除ボタンクリックイベント
@@ -80,6 +114,13 @@ Symphony_Board
 <member name="M:Symphony_Board.TopForm.btnUpdate_Click(System.Object,System.EventArgs)">
  <summary>
  更新ボタンクリックイベント
+ </summary>
+ <param name="sender"></param>
+ <param name="e"></param>
+</member>
+<member name="M:Symphony_Board.TopForm.btnPrint_Click(System.Object,System.EventArgs)">
+ <summary>
+ 印刷ボタンクリックイベント
  </summary>
  <param name="sender"></param>
  <param name="e"></param>
