@@ -174,10 +174,10 @@ Partial Class TopForm
         Me.nhTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.nhTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.nhTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.nhTextBox.Location = New System.Drawing.Point(138, 107)
+        Me.nhTextBox.Location = New System.Drawing.Point(138, 109)
         Me.nhTextBox.Multiline = True
         Me.nhTextBox.Name = "nhTextBox"
-        Me.nhTextBox.Size = New System.Drawing.Size(402, 52)
+        Me.nhTextBox.Size = New System.Drawing.Size(402, 48)
         Me.nhTextBox.TabIndex = 6
         '
         'Panel2
@@ -454,7 +454,7 @@ Partial Class TopForm
         Me.dsTextBox.Location = New System.Drawing.Point(138, 291)
         Me.dsTextBox.Multiline = True
         Me.dsTextBox.Name = "dsTextBox"
-        Me.dsTextBox.Size = New System.Drawing.Size(402, 40)
+        Me.dsTextBox.Size = New System.Drawing.Size(402, 36)
         Me.dsTextBox.TabIndex = 34
         '
         'snTextBox
@@ -462,10 +462,10 @@ Partial Class TopForm
         Me.snTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.snTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.snTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.snTextBox.Location = New System.Drawing.Point(138, 342)
+        Me.snTextBox.Location = New System.Drawing.Point(138, 344)
         Me.snTextBox.Multiline = True
         Me.snTextBox.Name = "snTextBox"
-        Me.snTextBox.Size = New System.Drawing.Size(402, 40)
+        Me.snTextBox.Size = New System.Drawing.Size(402, 36)
         Me.snTextBox.TabIndex = 35
         '
         'hlprTextBox
@@ -473,10 +473,10 @@ Partial Class TopForm
         Me.hlprTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.hlprTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.hlprTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.hlprTextBox.Location = New System.Drawing.Point(138, 411)
+        Me.hlprTextBox.Location = New System.Drawing.Point(138, 412)
         Me.hlprTextBox.Multiline = True
         Me.hlprTextBox.Name = "hlprTextBox"
-        Me.hlprTextBox.Size = New System.Drawing.Size(402, 40)
+        Me.hlprTextBox.Size = New System.Drawing.Size(402, 36)
         Me.hlprTextBox.TabIndex = 36
         '
         'kyoTextBox
@@ -484,10 +484,10 @@ Partial Class TopForm
         Me.kyoTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.kyoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.kyoTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.kyoTextBox.Location = New System.Drawing.Point(138, 461)
+        Me.kyoTextBox.Location = New System.Drawing.Point(138, 463)
         Me.kyoTextBox.Multiline = True
         Me.kyoTextBox.Name = "kyoTextBox"
-        Me.kyoTextBox.Size = New System.Drawing.Size(402, 40)
+        Me.kyoTextBox.Size = New System.Drawing.Size(402, 36)
         Me.kyoTextBox.TabIndex = 37
         '
         'hokTextBox
@@ -495,10 +495,10 @@ Partial Class TopForm
         Me.hokTextBox.BackColor = System.Drawing.SystemColors.Control
         Me.hokTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.hokTextBox.ForeColor = System.Drawing.Color.Blue
-        Me.hokTextBox.Location = New System.Drawing.Point(138, 514)
+        Me.hokTextBox.Location = New System.Drawing.Point(138, 515)
         Me.hokTextBox.Multiline = True
         Me.hokTextBox.Name = "hokTextBox"
-        Me.hokTextBox.Size = New System.Drawing.Size(402, 52)
+        Me.hokTextBox.Size = New System.Drawing.Size(402, 48)
         Me.hokTextBox.TabIndex = 38
         '
         's1TextBox
