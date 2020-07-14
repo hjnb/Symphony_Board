@@ -329,7 +329,7 @@ Public Class TopForm
         clearInputBoard()
 
         '日付
-        dateLabel.Text = formatDateStr(ymd)
+        dateLabel.Text = formatDateADStr(ymd)
 
         'データ取得、表示
         Dim cnn As New ADODB.Connection
@@ -466,7 +466,7 @@ Public Class TopForm
         Dim dd As Integer = CInt(ymd.Split("/")(2))
 
         '日付
-        dateLabel.Text = formatDateStr(ymd)
+        dateLabel.Text = formatDateADStr(ymd)
 
         'コメント
         cmntLabel.Text = Util.checkDBNullValue(dgvCmnt("Cmnt", dd - 1).Value)
@@ -593,8 +593,8 @@ Public Class TopForm
             Dim month As Integer = CInt(ymd.Substring(5, 2))
             Dim day As Integer = CInt(ymd.Substring(8, 2))
             Dim youbi As String = "(" & New DateTime(year, month, day).ToString("ddd") & ")"
-            Dim wareki As String = Util.convADStrToWarekiStr(ymd)
-            historyListBox.Items.Add(wareki & youbi)
+
+            historyListBox.Items.Add(ymd & youbi)
             rs.MoveNext()
         End While
         rs.Close()
@@ -606,11 +606,11 @@ Public Class TopForm
     End Sub
 
     Private Sub YmBox_YmdTextChange(sender As Object, e As EventArgs) Handles YmBox.YmdTextChange
-        displayDgvYotei(YmBox.getADYmStr())
+        displayDgvYotei(YmBox.getADymStr())
     End Sub
 
     Private Sub historyListBox_SelectedValueChanged(sender As Object, e As EventArgs) Handles historyListBox.SelectedValueChanged
-        Dim ymd As String = Util.convWarekiStrToADStr(historyListBox.Text.Substring(0, 9))
+        Dim ymd As String = historyListBox.Text.Substring(0, 10)
         YmdBox.setADStr(ymd)
     End Sub
 
@@ -632,6 +632,25 @@ Public Class TopForm
         Dim monthNum As String = CInt(warekiStr.Substring(4, 2))
         Dim dateNum As String = CInt(warekiStr.Substring(7, 2))
         Return kanji & " " & eraNum & " 年 " & monthNum & " 月 " & dateNum & " 日 " & "(" & day & ")"
+    End Function
+
+    ''' <summary>
+    ''' 日付フォーマット処理
+    ''' </summary>
+    ''' <param name="adStr"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function formatDateADStr(adStr As String) As String
+        If adStr = "" Then
+            Return ""
+        End If
+
+        Dim yyyy As Integer = CInt(adStr.Split("/")(0))
+        Dim mm As Integer = CInt(adStr.Split("/")(1))
+        Dim dd As Integer = CInt(adStr.Split("/")(2))
+        Dim day As String = dayArray(New DateTime(yyyy, mm, dd).DayOfWeek)
+
+        Return yyyy.ToString() & " 年 " & mm.ToString() & " 月 " & dd.ToString() & " 日 " & "(" & day & ")"
     End Function
 
     Private Sub dgv_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles dgvCmnt.CellPainting, dgvYotei.CellPainting
@@ -854,7 +873,7 @@ Public Class TopForm
         End If
 
         '印刷データ作成
-        Dim ymdFormatStr As String = formatDateStr(ymd)
+        Dim ymdFormatStr As String = formatDateADStr(ymd)
         Dim cmnt As String = Util.checkDBNullValue(rs.Fields("Cmnt").Value)
         Dim dataArray(48, 9) As String
         '特養

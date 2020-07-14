@@ -68,6 +68,13 @@ Symphony_Board
 	<param name="adStr"></param>
 	<returns></returns>
 	<remarks></remarks>
+</member><member name="M:Symphony_Board.TopForm.formatDateADStr(System.String)">
+	<summary>
+ 日付フォーマット処理
+ </summary>
+	<param name="adStr"></param>
+	<returns></returns>
+	<remarks></remarks>
 </member><member name="M:Symphony_Board.TopForm.editModeCheckBox_CheckedChanged(System.Object,System.EventArgs)">
 	<summary>
  編集モードチェックボックス値変更イベント

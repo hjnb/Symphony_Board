@@ -23,7 +23,6 @@ Partial Class TopForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.YmdBox = New ymdBox.ymdBox()
         Me.historyListBox = New System.Windows.Forms.ListBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.dateLabel = New System.Windows.Forms.Label()
@@ -102,7 +101,8 @@ Partial Class TopForm
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.editModeCheckBox = New System.Windows.Forms.CheckBox()
-        Me.YmBox = New ymdBox.ymdBox()
+        Me.YmdBox = New ADBox2.ADBox2()
+        Me.YmBox = New ADBox2.ADBox2()
         Me.yoteiGroupBox.SuspendLayout()
         CType(Me.dgvCmnt, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvYotei, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -117,19 +117,6 @@ Partial Class TopForm
         Me.Label1.Size = New System.Drawing.Size(129, 27)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "掲　示　板"
-        '
-        'YmdBox
-        '
-        Me.YmdBox.boxType = 4
-        Me.YmdBox.DateText = ""
-        Me.YmdBox.EraLabelText = "H31"
-        Me.YmdBox.EraText = ""
-        Me.YmdBox.Location = New System.Drawing.Point(552, 43)
-        Me.YmdBox.MonthLabelText = "03"
-        Me.YmdBox.MonthText = ""
-        Me.YmdBox.Name = "YmdBox"
-        Me.YmdBox.Size = New System.Drawing.Size(145, 34)
-        Me.YmdBox.TabIndex = 1
         '
         'historyListBox
         '
@@ -868,12 +855,12 @@ Partial Class TopForm
         '
         'yoteiGroupBox
         '
+        Me.yoteiGroupBox.Controls.Add(Me.YmBox)
         Me.yoteiGroupBox.Controls.Add(Me.dgvCmnt)
         Me.yoteiGroupBox.Controls.Add(Me.dgvYotei)
         Me.yoteiGroupBox.Controls.Add(Me.btnDelete)
         Me.yoteiGroupBox.Controls.Add(Me.btnUpdate)
         Me.yoteiGroupBox.Controls.Add(Me.editModeCheckBox)
-        Me.yoteiGroupBox.Controls.Add(Me.YmBox)
         Me.yoteiGroupBox.Location = New System.Drawing.Point(702, 7)
         Me.yoteiGroupBox.Name = "yoteiGroupBox"
         Me.yoteiGroupBox.Size = New System.Drawing.Size(416, 696)
@@ -928,24 +915,37 @@ Partial Class TopForm
         Me.editModeCheckBox.Text = "編集モード（マスタ読込）"
         Me.editModeCheckBox.UseVisualStyleBackColor = True
         '
+        'YmdBox
+        '
+        Me.YmdBox.dateText = ""
+        Me.YmdBox.Location = New System.Drawing.Point(541, 45)
+        Me.YmdBox.Mode = 0
+        Me.YmdBox.monthText = ""
+        Me.YmdBox.Name = "YmdBox"
+        Me.YmdBox.Size = New System.Drawing.Size(160, 32)
+        Me.YmdBox.TabIndex = 1
+        Me.YmdBox.textReadOnly = False
+        Me.YmdBox.Visible = False
+        Me.YmdBox.yearText = ""
+        '
         'YmBox
         '
-        Me.YmBox.boxType = 7
-        Me.YmBox.DateText = ""
-        Me.YmBox.EraLabelText = "H31"
-        Me.YmBox.EraText = ""
+        Me.YmBox.dateText = ""
         Me.YmBox.Location = New System.Drawing.Point(14, 13)
-        Me.YmBox.MonthLabelText = "03"
-        Me.YmBox.MonthText = ""
+        Me.YmBox.Mode = 32
+        Me.YmBox.monthText = ""
         Me.YmBox.Name = "YmBox"
-        Me.YmBox.Size = New System.Drawing.Size(120, 46)
+        Me.YmBox.Size = New System.Drawing.Size(110, 46)
         Me.YmBox.TabIndex = 0
+        Me.YmBox.textReadOnly = False
+        Me.YmBox.yearText = ""
         '
         'TopForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1173, 723)
+        Me.Controls.Add(Me.YmdBox)
         Me.Controls.Add(Me.yoteiGroupBox)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.Label31)
@@ -1019,7 +1019,6 @@ Partial Class TopForm
         Me.Controls.Add(Me.dateLabel)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.historyListBox)
-        Me.Controls.Add(Me.YmdBox)
         Me.Controls.Add(Me.Label1)
         Me.Name = "TopForm"
         Me.Text = "Board　掲示板"
@@ -1033,7 +1032,6 @@ Partial Class TopForm
     End Sub
 
     Friend WithEvents Label1 As Label
-    Friend WithEvents YmdBox As ymdBox.ymdBox
     Friend WithEvents historyListBox As ListBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents dateLabel As Label
@@ -1110,7 +1108,8 @@ Partial Class TopForm
     Friend WithEvents btnDelete As Button
     Friend WithEvents btnUpdate As Button
     Friend WithEvents editModeCheckBox As CheckBox
-    Friend WithEvents YmBox As ymdBox.ymdBox
     Friend WithEvents dgvCmnt As DataGridView
     Friend WithEvents dgvYotei As DataGridView
+    Friend WithEvents YmdBox As ADBox2.ADBox2
+    Friend WithEvents YmBox As ADBox2.ADBox2
 End Class
